@@ -2,6 +2,7 @@ var IsMobilePlatform = false;
 
 let cachedConfigFile = null;
 let configUrl = 'https://spgames.s3.ap-south-1.amazonaws.com/bomb-master-3d/vkgames/0.1/RemoteConfig.json';
+var showedRewardVideo = false;
 
 function LoadConfig(successCallback, errorCallback)
 {
@@ -87,12 +88,15 @@ function WebRequestToObject(reqeust)
 
 window.onfocus = function()
 {
-    BaseSendMessage('SPGameService', 'FocusMode', 1);
+    if(showedRewardVideo == true)
+        return;
+    
+    BaseSendMessage('GameServices', 'FocusMode', 1);
 };
 
 window.onblur = function()
 {
-    BaseSendMessage('SPGameService', 'FocusMode', 0);
+    BaseSendMessage('GameServices', 'FocusMode', 0);
 };
 
 function setElementByIdStyleType(id, type)
