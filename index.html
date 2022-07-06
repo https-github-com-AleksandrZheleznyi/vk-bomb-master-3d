@@ -17,7 +17,7 @@
     <script src="scripts/common.js"></script>
     <script src="Template/UnityProgress.js"></script>
     <script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
-    
+
     <script>
       window.alert = console.log;
       var unityInstance = null;
@@ -53,6 +53,8 @@
 
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
         IsMobilePlatform = true;
+        environment.deviceInfo.isMobile = true;
+        
         container.className = "unity-mobile";
         config.devicePixelRatio = 1;
       }
